@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ object.title }}</h2>
+<p>Описание: {{ object.description|default:"Нет описания" }}</p>
+<p>Создано: {{ object.created_at }}</p>
+<p>Статус: {{ object.completed|yesno:"Завершена,В процессе" }}</p>
+
+<a href="{% url 'task-update' object.pk %}">Редактировать</a>
+<a href="{% url 'task-delete' object.pk %}">Удалить</a>
+<a href="{% url 'task-list' %}">Назад к списку</a>
+{% endblock %}
