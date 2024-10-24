@@ -1,6 +1,13 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from rest_framework import viewsets
 from .models import Task
+from Core import serializers
+
+
+class TaskAIP(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = serializers.Task
 
 
 class TaskListView(ListView):
